@@ -1,0 +1,29 @@
+#include <iostream>
+#include <memory>
+#include <string>
+#include <algorithm>
+#include <ctime>
+using namespace std;
+int main()
+{
+	srand(time(NULL));
+	int players = 0,count=0;
+	cout << "Welcome to my tournament match maker\n";
+	cout << "Enter the number of participants in the tournament: ";
+	cin >> players;
+	string *pArray = new string[players]; //dynamically allocate
+	cin.ignore();
+	for (int i = 0;i < players;i++)
+	{
+		cout << "Enter the name of player " << i + 1<<":";
+		getline(cin, pArray[i]);
+	}
+	random_shuffle(&pArray[0], &pArray[players]);
+	for (int i = 0;i < players;i++)
+	{
+		cout << ++count << ": " << pArray[i] << " vs " << pArray[i + 1] << endl;
+		i++;
+	}
+
+	return 0;
+}
